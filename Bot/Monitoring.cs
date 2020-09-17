@@ -37,7 +37,7 @@ namespace Valkyrja.metrics
 
 			if( this.Prometheus == null )
 			{
-				this.Prometheus = new MetricPusher(this.Client.CoreConfig.PrometheusEndpoint, this.Client.CoreConfig.PrometheusJob, this.Client.Config.ServerId.ToString(), (long)(1f / this.Client.CoreConfig.TargetFps * 1000));
+				this.Prometheus = new MetricPusher(this.Client.CoreConfig.PrometheusEndpoint, this.Client.CoreConfig.PrometheusJob, this.Client.CoreConfig.PrometheusInstance, (long)(1f / this.Client.CoreConfig.TargetFps * 1000));
 			}
 
 			this.Prometheus.Start();
@@ -49,7 +49,7 @@ namespace Valkyrja.metrics
 			newCommand.Type = CommandType.Standard;
 			newCommand.Description = "This is an example command.";
 			newCommand.ManPage = new ManPage("<UserId>", "`<UserId>` - A user(s) who received help.");
-			newCommand.RequiredPermissions = PermissionType.ServerOwner | PermissionType.Admin | PermissionType.Moderator | PermissionType.SubModerator | PermissionType.Member;
+			newCommand.RequiredPermissions = PermissionType.Everyone;
 			newCommand.OnExecute += async e => {
 				List<guid> mentionedUserIds = this.Client.GetMentionedUserIds(e, false);
 				foreach( guid userId in mentionedUserIds )
