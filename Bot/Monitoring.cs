@@ -59,6 +59,7 @@ namespace Valkyrja.metrics
 					if( this.HelpedUserIds.Contains(userId) )
 						continue;
 					this.UniqueHelpCounter.Inc();
+					this.HelpedUserIds.Add(userId);
 				}
 				await e.Message.AddReactionAsync(new Emoji("✅"));
 			};
