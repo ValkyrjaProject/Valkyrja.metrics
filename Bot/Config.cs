@@ -2,10 +2,10 @@ using System;
 
 using guid = System.UInt64;
 
-namespace Valkyrja.modmail
+namespace Valkyrja.metrics
 {
 	public class Config: Valkyrja.entities.BaseConfig
 	{
-		//config.json properties
+		public guid ServerId = 0;
 	}
 }
