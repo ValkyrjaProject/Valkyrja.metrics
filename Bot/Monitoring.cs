@@ -37,7 +37,7 @@ namespace Valkyrja.metrics
 
 			if( this.Prometheus == null )
 			{
-				this.Prometheus = new MetricPusher(this.Client.CoreConfig.PrometheusEndpoint, this.Client.CoreConfig.PrometheusJob, this.Client.CoreConfig.PrometheusInstance, (long)(1f / this.Client.CoreConfig.TargetFps * 1000));
+				this.Prometheus = new MetricPusher(this.Client.CoreConfig.PrometheusEndpoint, this.Client.CoreConfig.PrometheusJob, this.Client.CoreConfig.PrometheusInstance, this.Client.CoreConfig.PrometheusInterval);
 			}
 
 			this.Prometheus.Start();
