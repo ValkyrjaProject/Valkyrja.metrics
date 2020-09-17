@@ -52,6 +52,12 @@ namespace Valkyrja.metrics
 			newCommand.RequiredPermissions = PermissionType.Everyone;
 			newCommand.OnExecute += async e => {
 				List<guid> mentionedUserIds = this.Client.GetMentionedUserIds(e, false);
+				if( !mentionedUserIds.Any() )
+				{
+					await e.SendReplySafe("Please tell me who you helped so that I can tell if it's a unique user! (mention or ID)");
+					return;
+				}
+
 				foreach( guid userId in mentionedUserIds )
 				{
 					this.HelpCounter.Inc();
